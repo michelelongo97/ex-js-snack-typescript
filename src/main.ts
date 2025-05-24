@@ -21,13 +21,19 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 //Se è una Promise: attendi che si risolva e stampa il valore del resolve.
 
 let dato: unknown;
-dato = [];
+
 if (typeof dato === "string") {
   console.log(dato.toUpperCase());
 } else if (typeof dato === "number") {
   console.log(dato * 2);
 } else if (typeof dato === "boolean") {
   console.log(dato);
+} else if (dato === null) {
+  console.log("il dato è vuoto");
+} else if (Array.isArray(dato)) {
+  console.log(dato.length);
+} else if (dato instanceof Promise) {
+  dato.then((val) => console.log(val));
 } else {
   console.log("Tipo non supportato");
 }
